@@ -12,6 +12,7 @@
     "arrow-body-style":"off",
     "no-tabs": "off",
     "no-alert": "off",
-    "max-len": ["warn", { "ignoreUrls": true }]
+    "max-len": "off",
+    "linebreak-style": "off"
   }
 }
