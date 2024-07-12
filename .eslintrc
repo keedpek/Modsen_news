@@ -4,7 +4,7 @@
     "es6": true,
     "node": true
   },
-  "extends":["airbnb/base", "react-app"],
+  "extends":[/*"airbnb/base",*/ "react-app"],
   "rules": {
     "no-plusplus": "off",
     "prefer-destructuring": "off",
@@ -12,6 +12,8 @@
     "arrow-body-style":"off",
     "no-tabs": "off",
     "no-alert": "off",
-    "max-len": ["warn", { "ignoreUrls": true }]
+    "max-len": "off",
+    "linebreak-style": "off",
+    "eslint-plugin-import/no-extraneous-dependencies":"off"
   }
 }
