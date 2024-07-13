@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { createContext } from 'react';
 import ReactDOM from 'react-dom/client';
 import { createGlobalStyle } from 'styled-components';
 import App from './App';
+import NewsStore from './store/NewsStore';
 
 const Global = createGlobalStyle`
 @import url('https://fonts.googleapis.com/css2?family=Lexend+Deca&display=swap');
@@ -15,10 +16,18 @@ body {
 }
 `;
 
+export const Context = createContext(null)
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <Global />
-    <App />
+    <Context.Provider value={
+      {
+        news: new NewsStore(),
+      }
+    }>
+      <Global />
+      <App />
+    </Context.Provider>
   </React.StrictMode>,
 );
