@@ -1,10 +1,12 @@
 import React from 'react';
+import Loader from '../../components/Loader';
+import Flex from '../../components/Wrappers/Flex';
 
 const MainPage = () => {
   return (
-    <div>
-      MainPage
-    </div>
+    <Flex align='center' justify='center' >
+      <Loader></Loader>
+    </Flex>
   );
 };
 

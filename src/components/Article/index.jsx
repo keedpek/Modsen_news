@@ -5,13 +5,18 @@ import Flex from '../Wrappers/Flex';
 import { observer } from 'mobx-react-lite';
 import { Context } from '../..';
 import nophoto from '../../assets/article_noimg.webp'
+import Loader from '../Loader';
 
 const Article = observer(() => {
   const {news} = useContext(Context);
   const article = news.currentArticle;
 
   if (!article) {
-    return <div>Loading...</div>
+    return (
+      <StyledArticle>
+        <Loader />
+      </StyledArticle>
+    ); 
   } 
 
   const dataConverter = (data) => {

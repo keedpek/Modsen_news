@@ -59,7 +59,7 @@ const NewsLink = ({article}) => {
   const shortDescription = (description) => {
     let result = ''
     let words = description.split(' ');
-    while (result.length < 120) {
+    while (result.length < 100) {
       result += words.shift() + ' '
     }
     if (result !== description) {
@@ -69,19 +69,17 @@ const NewsLink = ({article}) => {
     return result;
   }
 
-  const findArticleByID = (id) => {
-    return news.sideBarArticles.find(article => article.id === id)
-  }
-
   return (
-    <StyledNewsLink onClick={() => {news.setCurrentArticle(findArticleByID(article.id))}}>
-      <img src={article.urlToImage || noimage} width='140vw' height='140vw' alt=''/>
+    <StyledNewsLink onClick={() => {
+      news.setCurrentArticle(article)
+    }}>
+      <img src={article.urlToImage || noimage} width='30%' height='100%' alt=''/>
       <Flex direction='column' justify='space-between'>
-        <TextBox size='16px' weight='700' color='rgba(44, 49, 68, 1)'>{article.title}</TextBox>
-        <TextBox size='13px' color='rgba(57, 57, 57, 1)'>{article.description ? shortDescription(article.description) : 'cannot get description'}</TextBox>
+        <TextBox size='16px' mSize='14px' sSize='12px' weight='700' color='rgba(44, 49, 68, 1)'>{article.title}</TextBox>
+        <TextBox size='13px' mSize='11px' sSize='9px' color='rgba(57, 57, 57, 1)'>{article.description ? shortDescription(article.description) : 'cannot get description'}</TextBox>
         <Flex>
-          <TextBox size='13px' color='rgba(44, 49, 68, 1)'>{(article.author || 'unknown author') + ' -'}</TextBox>
-          <TextBox size='13px' color='rgba(137, 137, 137, 1)'>{dataConverter(article.publishedAt)}</TextBox>
+          <TextBox size='13px' mSize='11px' sSize='9px' color='rgba(44, 49, 68, 1)'>{(article.author || 'unknown author') + ' -'}</TextBox>
+          <TextBox size='13px' mSize='11px' sSize='9px' color='rgba(137, 137, 137, 1)'>{dataConverter(article.publishedAt)}</TextBox>
         </Flex>
       </Flex>
       
