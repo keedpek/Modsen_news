@@ -1,15 +1,19 @@
 import React, { useContext } from 'react';
-import StyledArticle from './styled';
+import {StyledArticle, StyledLink} from './styled';
 import TextBox from '../Wrappers/Text';
 import Flex from '../Wrappers/Flex';
 import { observer } from 'mobx-react-lite';
 import { Context } from '../..';
 import nophoto from '../../assets/article_noimg.webp'
 import Loader from '../Loader';
+import { useParams } from 'react-router-dom';
 
 const Article = observer(() => {
-  const {news} = useContext(Context);
-  const article = news.currentArticle;
+  const {id} = useParams()
+  const {news} = useContext(Context)
+  const currTitle = id.split('_').join(' ')
+  const article = news.sideBarArticles.find(art => art.title === currTitle);
+  news.setCurrentArticle(article)
 
   if (!article) {
     return (
@@ -86,8 +90,8 @@ const Article = observer(() => {
         <TextBox color='rgba(44, 49, 68, 1)'>{'by ' + article.source.name}</TextBox>
       </Flex>
       <img src={article.urlToImage || nophoto} width='100%' alt='article'/>
-      <TextBox>{article.content}</TextBox>
-      <a href={article.url}>Ссылка</a>
+      <TextBox>{article.content.replace(/\s*\[\+\s*\d+\s*chars\]$/, '')}</TextBox>
+      <StyledLink href={article.url}>Link to the origin</StyledLink>
     </StyledArticle>
   );
 });

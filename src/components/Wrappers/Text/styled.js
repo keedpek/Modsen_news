@@ -8,11 +8,15 @@ text-align: ${props => props.align || 'left'};
 font-size: ${props => props.size || '16px'};
 
 @media (max-width: 1100px) {
-  font-size: ${props => props.mSize || '16px'};
+  font-size: ${props => props.mSize || props.size || '16px'};
 }
 
 @media (max-width: 900px) {
-  font-size: ${props => props.sSize || '16px'};
+  font-size: ${props => props.sSize || props.size || '16px'};
+}
+
+@media (max-width: 768px) {
+  font-size: ${props => props.mobSize || props.size || '16px'};
 }
 `
 

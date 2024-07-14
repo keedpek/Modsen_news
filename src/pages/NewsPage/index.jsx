@@ -1,6 +1,6 @@
 import React, {useContext, useEffect} from 'react';
 import Flex from '../../components/Wrappers/Flex'
-import DesktopSideBar from '../../components/SideBar/DesktopSideBar';
+import SideBar from '../../components/SideBar';
 import Article from '../../components/Article';
 import { fetchNews } from '../../utils/http/newsAPI';
 import { observer } from 'mobx-react-lite';
@@ -24,7 +24,7 @@ const NewsPage = observer(() => {
   return (
     <Flex padding='2% 7%' justify="space-between">
       <Article/>
-      <DesktopSideBar/>
+      <SideBar/>
     </Flex>
   );
 });

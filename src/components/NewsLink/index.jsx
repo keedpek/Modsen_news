@@ -1,12 +1,13 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import StyledNewsLink from './styled';
 import Flex from '../Wrappers/Flex';
 import TextBox from '../Wrappers/Text';
-import { Context } from '../..';
 import noimage from '../../assets/noimage.jpg'
+import { useNavigate } from 'react-router-dom';
+import { NEWS } from '../../consts/paths';
 
 const NewsLink = ({article}) => {
-  const {news} = useContext(Context);
+  const navigate = useNavigate()
 
   const dataConverter = (data) => {
     let result = data.substr(8, 2);
@@ -71,7 +72,7 @@ const NewsLink = ({article}) => {
 
   return (
     <StyledNewsLink onClick={() => {
-      news.setCurrentArticle(article)
+      navigate(NEWS + '/' + article.title.split(' ').join('_'))
     }}>
       <img src={article.urlToImage || noimage} width='30%' height='100%' alt=''/>
       <Flex direction='column' justify='space-between'>
