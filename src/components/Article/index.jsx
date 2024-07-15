@@ -86,11 +86,11 @@ const Article = observer(() => {
       <TextBox color='rgba(57, 57, 57, 1)' weight='400'>{'News > Financial Post'}</TextBox>
       <TextBox size='30px' color='rgba(44, 49, 68, 1)' weight='700'>{article.title}</TextBox>
       <Flex direction='column' gap='10px'>
-        <TextBox size='14px' color='rgba(137, 137, 137, 1)'>{dataConverter(article.publishedAt)}</TextBox>
-        <TextBox color='rgba(44, 49, 68, 1)'>{'by ' + article.source.name}</TextBox>
+        <TextBox size='14px' color='rgba(137, 137, 137, 1)'>{dataConverter(article.published_at)}</TextBox>
+        <TextBox color='rgba(44, 49, 68, 1)'>{'by ' + article.source}</TextBox>
       </Flex>
-      <img src={article.urlToImage || nophoto} width='100%' alt='article'/>
-      <TextBox>{article.content.replace(/\s*\[\+\s*\d+\s*chars\]$/, '')}</TextBox>
+      <img src={article.image_url || nophoto} width='100%' alt='main image'/>
+      <TextBox>{article.snippet}</TextBox>
       <StyledLink href={article.url}>Link to the origin</StyledLink>
     </StyledArticle>
   );
