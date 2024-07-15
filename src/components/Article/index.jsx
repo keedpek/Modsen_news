@@ -89,7 +89,7 @@ const Article = observer(() => {
         <TextBox size='14px' color='rgba(137, 137, 137, 1)'>{dataConverter(article.published_at)}</TextBox>
         <TextBox color='rgba(44, 49, 68, 1)'>{'by ' + article.source}</TextBox>
       </Flex>
-      <img src={article.image_url || nophoto} width='100%' alt='main image'/>
+      <img src={article.image_url || nophoto} width='100%' alt='main'/>
       <TextBox>{article.snippet}</TextBox>
       <StyledLink href={article.url}>Link to the origin</StyledLink>
     </StyledArticle>
