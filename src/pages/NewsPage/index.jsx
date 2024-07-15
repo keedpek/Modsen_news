@@ -18,7 +18,7 @@ const NewsPage = observer(() => {
     }
   
     fetch9News()
-  }, [])
+  }, [news])
 
   return (
     <Flex padding='2% 7%' justify="space-between">
