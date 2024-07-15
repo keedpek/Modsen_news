@@ -74,13 +74,13 @@ const NewsLink = ({article}) => {
     <StyledNewsLink onClick={() => {
       navigate(NEWS + '/' + article.title.split(' ').join('_'))
     }}>
-      <img src={article.urlToImage || noimage} width='30%' height='100%' alt=''/>
+      <img src={article.image_url || noimage} width='30%' height='100%' alt=''/>
       <Flex direction='column' justify='space-between'>
         <TextBox size='16px' mSize='14px' sSize='12px' weight='700' color='rgba(44, 49, 68, 1)'>{article.title}</TextBox>
-        <TextBox size='13px' mSize='11px' sSize='9px' color='rgba(57, 57, 57, 1)'>{article.description ? shortDescription(article.description) : 'cannot get description'}</TextBox>
+        <TextBox size='13px' mSize='11px' sSize='9px' color='rgba(57, 57, 57, 1)'>{article.description ? shortDescription(article.description) : 'description is missed('}</TextBox>
         <Flex>
-          <TextBox size='13px' mSize='11px' sSize='9px' color='rgba(44, 49, 68, 1)'>{(article.author || 'unknown author') + ' -'}</TextBox>
-          <TextBox size='13px' mSize='11px' sSize='9px' color='rgba(137, 137, 137, 1)'>{dataConverter(article.publishedAt)}</TextBox>
+          <TextBox size='13px' mSize='11px' sSize='9px' color='rgba(44, 49, 68, 1)'>{('unknown author' || article.author) + ' -'}</TextBox>
+          <TextBox size='13px' mSize='11px' sSize='9px' color='rgba(137, 137, 137, 1)'>{dataConverter(article.published_at)}</TextBox>
         </Flex>
       </Flex>
       

@@ -5,20 +5,19 @@ import Article from '../../components/Article';
 import { fetchNews } from '../../utils/http/newsAPI';
 import { observer } from 'mobx-react-lite';
 import { Context } from '../..';
-import { v4 } from 'uuid';
 
 const NewsPage = observer(() => {
   const {news} = useContext(Context)
   useEffect(() => {
-    fetchNews('bitcoin').then(data => {
-      const articlesWithID = data.articles.map(article =>({
-        ...article,
-        id: v4()
-      }))
-      news.setArticles(articlesWithID);
-      news.setCurrentArticle(articlesWithID[0]);
-      news.setSideBarArticles(articlesWithID.slice(0, 9));
-    })
+    const fetch9News = async () => {
+      const responses = await Promise.all([1, 2, 3].map(page => fetchNews('en', page)));
+      const articles = responses.flatMap(res => res.data);
+      news.setArticles(articles);
+      news.setSideBarArticles(news.articles.slice(0, 9));
+      news.setCurrentArticle(news.articles[0]);
+    }
+  
+    fetch9News()
   }, [])
 
   return (
